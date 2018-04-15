@@ -13,16 +13,15 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-        'THREE': '../node_modules/three/build/three.js'
-    })
-  ],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  mode: 'none',
+  stats: {
+    warnings: false
   }
 };
