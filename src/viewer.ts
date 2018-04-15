@@ -1,5 +1,5 @@
-import * as THREE from '../node_modules/three/build/three';
-import 'three/examples/js/controls/OrbitControls';
+// import * as THREE from 'three';
+// import 'three/examples/js/controls/OrbitControls';
 // declare const THREE: Object;
 // console.log(OrbitControls);
 // import {
@@ -13,15 +13,15 @@ import 'three/examples/js/controls/OrbitControls';
 //   AmbientLight
 // } from 'three-full';
 
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000 );
-console.log(camera);
-const controls = new THREE.OrbitControls(camera);
-console.log(controls);
+// const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000 );
+// console.log(camera);
+// const controls = new THREE.OrbitControls(camera);
+// console.log(controls);
 export class Viewer {
-  // public camera: Object;
+  public camera: THREE.PerspectiveCamera;
   // public controls: any;
-
-  // public static renderer: WebGLRenderer;
+  public controls: THREE.OrbitControls;
+  public static renderer: THREE.WebGLRenderer;
   // private static scene: Scene;
   // private static container: HTMLElement;
 
@@ -37,15 +37,20 @@ export class Viewer {
     //   this.scene.background = new Color(0xcccccc);
     //   this.scene.fog = new FogExp2(0xcccccc, 0.002);
     //
-    //   this.renderer = new WebGLRenderer();
-    //   this.renderer.setPixelRatio(window.devicePixelRatio);
-    //   this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.renderer = new THREE.WebGLRenderer();
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
     //
     //   this.container = window.document.getElementById('container');
     //   this.container.appendChild(this.renderer.domElement);
     //
-    this.camera = new PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+    this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
     this.camera.position.set(400, 200, 0);
+
+    this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+      this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+      this.controls.dampingFactor = 0.25;
+      this.controls.panningMode = HorizontalPanning; // default is ScreenSpacePanning
     //
     //   this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     //   this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled

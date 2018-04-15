@@ -13,6 +13,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+        'THREE': '../node_modules/three/build/three.js'
+    })
+  ],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
