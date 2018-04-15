@@ -6,7 +6,6 @@
   "dependencies": {
     "@types/three": "^0.91.7",
     "three": "^0.91.0",
-    "three-full": "^6.0.0",
     "three-orbitcontrols-ts": "^0.1.2",
     "webpack": "^4.5.0"
   },

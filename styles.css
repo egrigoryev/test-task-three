@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.create-container {
+    position: absolute;
+    top: 2%;
+    left: 2%
+}
+
+
+.create-container > div {
+    display: inline-block;
+}
+
+.delete-container {
+    position: absolute;
+    top: 70%;
+    left: 2%;
+    background-color: white;
+    overflow-y: scroll;
+    height: 30%;
+
+}
