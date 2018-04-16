@@ -9,7 +9,7 @@ export class Viewer {
     public scene: THREE.Scene;
     public container: HTMLElement;
     public createButton: HTMLElement;
-    public editButton: HTMLElement;
+    public editButton: HTMLButtonElement;
     public objectType: HTMLElement;
     public objectTypeValue: string;
     public objectScale: HTMLElement;
@@ -22,6 +22,8 @@ export class Viewer {
 
 
     public init() {
+        let a = (<HTMLButtonElement>window.document.getElementById("edit-button__button"));
+        a.disabled = true;
         this.mouse = new THREE.Vector2();
 
         this.scene = new THREE.Scene();
@@ -68,7 +70,7 @@ export class Viewer {
         // Control panel service
         this.objectController = new ObjectController('');
         this.createButton = window.document.getElementById('create-button__button');
-        this.editButton = window.document.getElementById('edit-button__button');
+        this.editButton = (<HTMLButtonElement>window.document.getElementById('edit-button__button'));
 
         // Add listeners for buttons events
         this.createButton.addEventListener('click', () => this.createObject());
@@ -173,6 +175,7 @@ export class Viewer {
                 this.INTERSECTED.currentHex = this.INTERSECTED.material.emissive.getHex();
                 this.INTERSECTED.material.emissive.setHex(0x00ff00);
                 this.isClicked = true;
+                this.editButton.disabled = false;
             }
         } else {
             if (this.INTERSECTED) {
@@ -180,6 +183,7 @@ export class Viewer {
                 this.selectedObject = null;
             }
             this.isClicked = false;
+            this.editButton.disabled = true;
             this.INTERSECTED = null;
         }
     }
