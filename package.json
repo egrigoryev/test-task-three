@@ -7,11 +7,14 @@
     "@types/three": "^0.91.7",
     "three": "^0.91.0",
     "three-orbitcontrols-ts": "^0.1.2",
-    "webpack": "^4.5.0"
+    "uglify-js": "^3.3.21",
+    "webpack": "^4.5.0",
+    "webpack-obfuscator": "^0.15.0"
   },
   "devDependencies": {
     "ts-loader": "^4.2.0",
     "typescript": "^2.8.1",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack-cli": "^2.0.14"
   },
   "scripts": {

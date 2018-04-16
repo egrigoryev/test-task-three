@@ -17,9 +17,8 @@ body {
 .delete-container {
     position: absolute;
     top: 70%;
-    left: 2%;
     background-color: white;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 30%;
-
+    width: 10%;
 }

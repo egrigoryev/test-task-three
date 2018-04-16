@@ -1,7 +1,13 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  plugins: [
+    new UglifyJsPlugin({
+      sourceMap: true
+    })
+  ],
   entry: './src/app.ts',
     devtool: 'source-map',
   module: {
@@ -20,7 +26,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'none',
+  mode: 'production',
   stats: {
     warnings: false
   }
