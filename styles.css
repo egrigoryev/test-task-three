@@ -9,16 +9,16 @@ body {
     left: 2%
 }
 
-
 .create-container > div {
     display: inline-block;
 }
 
 .delete-container {
+    /*text-align: center;*/
     position: absolute;
     top: 70%;
     background-color: white;
     overflow-y: auto;
     height: 30%;
-    width: 10%;
+    width: 15%;
 }

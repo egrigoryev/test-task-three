@@ -9,7 +9,7 @@ export class ObjectController {
         console.log(this.objectUUID);
     }
 
-    public addObject(scene: THREE.Scene, objectType: string, scale: number){
+    public addObject(scene: THREE.Scene, objectType: string, scale: number): void {
         let geometry;
         switch(objectType) {
             case 'cube':
@@ -34,7 +34,7 @@ export class ObjectController {
         this.objectUUID = mesh.uuid;
     }
 
-    public editObject(scene: THREE.Scene, objectType: string, scale: number, mesh: THREE.Object3D) {
+    public editObject(objectType: string, scale: number, mesh: THREE.Object3D): void {
         let geometry;
         switch(objectType) {
             case 'cube':

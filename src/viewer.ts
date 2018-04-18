@@ -17,11 +17,10 @@ export class Viewer {
     public raycaster: THREE.Raycaster;
     public mouse: THREE.Vector2;
     public INTERSECTED: any;
-    public selectedObject: any;
+    public selectedObject: THREE.Object3D;
     public isClicked: boolean = false;
 
-
-    public init() {
+    public init() : void {
         let a = (<HTMLButtonElement>window.document.getElementById("edit-button__button"));
         a.disabled = true;
         this.mouse = new THREE.Vector2();
@@ -78,7 +77,7 @@ export class Viewer {
 
     }
 
-    private createObject() {
+    private createObject(): void {
         // Receive object type from HTML select element
         this.objectType = window.document.getElementById('figure-type');
         this.objectTypeValue = (<HTMLInputElement>this.objectType).value;
@@ -109,14 +108,13 @@ export class Viewer {
         objectsList.appendChild(deleteButton);
     }
 
-    private editObject() {
+    private editObject(): void {
         this.objectType = window.document.getElementById('figure-type');
         this.objectTypeValue = (<HTMLInputElement>this.objectType).value;
         this.objectScale = window.document.getElementById('scale');
         this.objectScaleValue = (<HTMLInputElement>this.objectScale).value;
 
         this.objectController.editObject(
-            this.scene,
             this.objectTypeValue,
             parseInt(this.objectScaleValue),
             this.selectedObject
@@ -128,7 +126,7 @@ export class Viewer {
 
     }
 
-    private onSceneMouseMove(event: any) {
+    private onSceneMouseMove(event: MouseEvent) {
         event.preventDefault();
         this.mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
         this.mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
@@ -149,12 +147,9 @@ export class Viewer {
                 this.INTERSECTED = null;
             }
         }
-        else {
-            console.log(1);
-        }
     }
 
-    private onSceneMouseClick(event: any) {
+    private onSceneMouseClick(event: MouseEvent) {
 
         event.preventDefault();
         this.mouse.x = ( event.clientX / this.renderer.domElement.clientWidth ) * 2 - 1;
@@ -194,11 +189,11 @@ export class Viewer {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    public render() {
+    public render() : void {
         this.renderer.render(this.scene, this.camera);
     }
 
-    public animate() {
+    public animate() : void {
         requestAnimationFrame(() => this.animate());
         this.orbit.update();
         this.render();
